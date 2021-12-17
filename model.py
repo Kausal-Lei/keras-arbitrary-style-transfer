@@ -6,7 +6,7 @@ from keras import regularizers, activations
 from custom_layers import ImgPreprocess, InstanceNormWithScalingInputs, InstanceNorm, GramMatrix, RawWeights, total_variation_loss
 
 def NormD(act,nw,axis=3,**kwargs):
-    dsize = act._keras_shape[axis]
+    dsize = act.shape[axis]
     
     return  InstanceNormWithScalingInputs(axis=axis,**kwargs)([act,
                 Dense(dsize, activation=None)(nw),
